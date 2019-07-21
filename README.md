@@ -1,1 +1,1 @@
-# msa-eureka-ribbon
+# msa-eureka-feign-client

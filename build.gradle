@@ -1,0 +1,36 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'me.saro.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudServicesVersion', "2.1.4.RELEASE")
+	set('springCloudVersion', "Greenwich.SR2")
+}
+
+dependencies {
+
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-feign
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-feign', version: '1.4.7.RELEASE'
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
