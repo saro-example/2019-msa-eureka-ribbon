@@ -1,9 +1,15 @@
 spring:
   application:
-    name: spring-cloud-eureka-feign-client
+    name: spring-cloud-eureka-ribbon
 server:
   port: 8080
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+      preferSameZoneEureka: true
+ribbon:
+  eureka:
+    enabled: true
+
+logging.level.root: DEBUG
